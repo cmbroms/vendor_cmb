@@ -30,7 +30,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cmd/prebuilt/common/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cmb/prebuilt/common/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -47,7 +47,7 @@ endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+    vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 endif
 
 ifdef CM_NIGHTLY
@@ -81,46 +81,46 @@ endif
 
 # Copy over the changelog to the device
 PRODUCT_COPY_FILES += \
-    vendor/cmd/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+    vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
-    vendor/cmd/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/cmd/prebuilt/common/bin/50-cmd.sh:system/addon.d/50-cmd.sh \
-    vendor/cmd/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/cmb/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
+    vendor/cmb/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
+    vendor/cmb/prebuilt/common/bin/50-cmd.sh:system/addon.d/50-cmd.sh \
+    vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cmd/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/cmb/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/cmb/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/cmb/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
 # SELinux filesystem labels
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+    vendor/cmb/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
 
 # CM-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/etc/init.local.rc:root/init.cmd.rc
+    vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cmd.rc
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/bin/compcache:system/bin/compcache \
-    vendor/cmd/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
+    vendor/cmb/prebuilt/common/bin/compcache:system/bin/compcache \
+    vendor/cmb/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 # Terminal Emulator
 PRODUCT_COPY_FILES +=  \
-    vendor/cmd/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cmd/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
+    vendor/cmb/proprietary/Term.apk:system/app/Term.apk \
+    vendor/cmb/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
 
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
-    vendor/cmd/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
-    vendor/cmd/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
+    vendor/cmb/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
+    vendor/cmb/prebuilt/common/media/PFFprec_600.emd:system/media/PFFprec_600.emd
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -132,14 +132,14 @@ PRODUCT_COPY_FILES += \
 
 # This is CM!
 PRODUCT_COPY_FILES += \
-    vendor/cmd/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/cmb/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/cmd/prebuilt/common/etc/mkshrc:system/etc/mkshrc
+    vendor/cmb/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
 # T-Mobile theme engine
-include vendor/cmd/config/themes_common.mk
+include vendor/cmb/config/themes_common.mk
 
 # Required CM packages
 PRODUCT_PACKAGES += \
@@ -212,8 +212,8 @@ PRODUCT_PACKAGES += \
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cmd/overlay/dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/cmd/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/common
 
 PRODUCT_VERSION_MAJOR = 4
 PRODUCT_VERSION_MINOR = 3 

@@ -1,5 +1,5 @@
 # Inherit common CM stuff
-$(call inherit-product, vendor/cmd/config/common_full.mk)
+$(call inherit-product, vendor/cmb/config/common_full.mk)
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -9,5 +9,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
     PRODUCT_COPY_FILES += \
-        vendor/cmd/prebuilt/common/bootanimation/800.zip:system/media/bootanimation.zip
+        vendor/cmb/prebuilt/common/bootanimation/800.zip:system/media/bootanimation.zip
 endif
