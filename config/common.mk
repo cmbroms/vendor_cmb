@@ -1,6 +1,6 @@
-PRODUCT_BRAND ?= projectcmd
+PRODUCT_BRAND ?= projectcmb
 
--include vendor/cmd-priv/keys.mk
+-include vendor/cmb-priv/keys.mk
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
@@ -87,7 +87,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/cmb/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
-    vendor/cmb/prebuilt/common/bin/50-cmd.sh:system/addon.d/50-cmd.sh \
+    vendor/cmb/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
     vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # init.d support
@@ -105,7 +105,7 @@ PRODUCT_COPY_FILES += \
 
 # CM-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cmd.rc
+    vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Compcache/Zram support
 PRODUCT_COPY_FILES += \
@@ -256,7 +256,7 @@ else
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cmd.version=$(CM_VERSION) \
+  ro.cmb.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
 
