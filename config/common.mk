@@ -89,7 +89,7 @@ PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
     vendor/cmb/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
     vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
-    vendor/cmb/prebuilt/common/bin/remount:system/xbin
+    vendor/cmb/prebuilt/common/bin/remount:system/xbin/remount
 
 # init.d support
 PRODUCT_COPY_FILES += \
