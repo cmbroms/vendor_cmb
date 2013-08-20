@@ -6,23 +6,23 @@ SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
 # To deal with CM9 specifications
 # TODO: remove once all devices have been switched
-ifneq ($(TARGET_BOOTANIMATION_NAME),)
-TARGET_SCREEN_DIMENSIONS := $(subst -, $(space), $(subst x, $(space), $(TARGET_BOOTANIMATION_NAME)))
-ifeq ($(TARGET_SCREEN_WIDTH),)
-TARGET_SCREEN_WIDTH := $(word 2, $(TARGET_SCREEN_DIMENSIONS))
-endif
-ifeq ($(TARGET_SCREEN_HEIGHT),)
-TARGET_SCREEN_HEIGHT := $(word 3, $(TARGET_SCREEN_DIMENSIONS))
-endif
-endif
+#ifneq ($(TARGET_BOOTANIMATION_NAME),)
+#TARGET_SCREEN_DIMENSIONS := $(subst -, $(space), $(subst x, $(space), $(TARGET_BOOTANIMATION_NAME)))
+#ifeq ($(TARGET_SCREEN_WIDTH),)
+#TARGET_SCREEN_WIDTH := $(word 2, $(TARGET_SCREEN_DIMENSIONS))
+#ndif
+#ifeq ($(TARGET_SCREEN_HEIGHT),)
+#TARGET_SCREEN_HEIGHT := $(word 3, $(TARGET_SCREEN_DIMENSIONS))
+#endif
+#endif
 
-ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
+#ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
 
 # clear TARGET_BOOTANIMATION_NAME in case it was set for CM9 purposes
-TARGET_BOOTANIMATION_NAME :=
+#TARGET_BOOTANIMATION_NAME :=
 
 # determine the smaller dimension
-TARGET_BOOTANIMATION_SIZE := $(shell \
+#TARGET_BOOTANIMATION_SIZE := $(shell \
   if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
     echo $(TARGET_SCREEN_WIDTH); \
   else \
@@ -30,33 +30,33 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cmb/prebuilt/common/bootanimation))
-bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
+#bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cmb/prebuilt/common/bootanimation))
+#bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
-define check_and_set_bootanimation
-$(eval TARGET_BOOTANIMATION_NAME := $(shell \
-  if [ -z "$(TARGET_BOOTANIMATION_NAME)" ]; then
-    if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
+#define check_and_set_bootanimation
+#$(eval TARGET_BOOTANIMATION_NAME := $(shell \
+#  if [ -z "$(TARGET_BOOTANIMATION_NAME)" ]; then
+#    if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
       echo $(1); \
       exit 0; \
     fi;
-  fi;
-  echo $(TARGET_BOOTANIMATION_NAME); ))
-endef
-$(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
+#  fi;
+#  echo $(TARGET_BOOTANIMATION_NAME); ))
+#endef
+#$(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
-PRODUCT_COPY_FILES += \
+#PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
-endif
+#endif
 
-ifdef CM_NIGHTLY
-PRODUCT_PROPERTY_OVERRIDES += \
+#ifdef CM_NIGHTLY
+#PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=cyanogenmodnightly
-else
-PRODUCT_PROPERTY_OVERRIDES += \
+#else
+#PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=cyanogenmod
-endif
+#endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -71,12 +71,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1 \
-    persist.sys.root_access=1
+    ro.build.selinux=0 \
+    persist.sys.root_access=0
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
-ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 endif
 
 # Copy over the changelog to the device
@@ -88,7 +88,8 @@ PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/cmb/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
     vendor/cmb/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
-    vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
+    vendor/cmb/prebuilt/common/bin/remount:system/xbin
 
 # init.d support
 PRODUCT_COPY_FILES += \
