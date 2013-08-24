@@ -78,11 +78,13 @@ ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Enable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
+ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 endif
 
 # Copy over the changelog to the device
-PRODUCT_COPY_FILES += \
-    vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+#PRODUCT_COPY_FILES += \
+#    vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -165,9 +167,6 @@ PRODUCT_PACKAGES += \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
-    CMWallpapers \
-    Apollo \
-    CMUpdater \
     CMFileManager \
     LockClock
 
