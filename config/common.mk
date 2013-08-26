@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= projectcmb
+RODUCT_BRAND ?= projectcmb
 
 -include vendor/cmb-priv/keys.mk
 SUPERUSER_EMBEDDED := true
@@ -240,11 +240,11 @@ ifdef CM_BUILDTYPE
         # Add leading dash to CM_EXTRAVERSION
         CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
     endif
-else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := UNOFFICIAL
-    CM_EXTRAVERSION :=
-endif
+#else
+#    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
+#    CM_BUILDTYPE := UNOFFICIAL
+#    CM_EXTRAVERSION :=
+#endif
 
 ifdef CM_RELEASE
     CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
