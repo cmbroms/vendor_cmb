@@ -240,6 +240,8 @@ ifdef CM_BUILDTYPE
         # Add leading dash to CM_EXTRAVERSION
         CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
     endif
+endif
+
 #else
 #    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
 #    CM_BUILDTYPE := UNOFFICIAL
