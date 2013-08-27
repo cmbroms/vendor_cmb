@@ -1,7 +1,7 @@
 CyanogenMod
 ===========
 
-Maintainers (CyanogenMod 10.1):
+Maintainers (CyanogenMod 10.2):
 -----------------------------
 * __Acer A700:__ pawitp
 * __Asus EeePad Transformer (TF101):__ Bumble-Bee, EnJens
@@ -32,18 +32,24 @@ Maintainers (CyanogenMod 10.1):
 * __Motorola Xoom 4G LTE (Verizon):__ bazar, SteadyHawkin, TDR (Team Rogue)
 * __Samsung Captivate (SGH-I896 / SGH-I897):__ pawitp
 * __Samsung Epic 4G (SPH-D700):__ bbelos
+* __Samsung Exhilarate (SGH-I577):__ mikeyman77, carvsdriver
 * __Samsung Fascinate / Mesmerize (SCH-I500):__ jt1134, sbrissen
 * __Samsung Galaxy Note (GT-N7000):__ Entropy512, Espenfjo
 * __Samsung Galaxy Note II (GT-N7100):__ nebkat
 * __Samsung Galaxy Note II LTE (GT-N7105):__ codeworkx
 * __Samsung Galaxy Note II LTE (AT&T) (SGH-I317):__ codeworkx, cyanogen
 * __Samsung Galaxy Note II LTE (T-Mobile) (SGH-T889):__ codeworkx
-* __Samsung Galaxy Note II LTE (SCH-I605 / SPH-L900):__ sbrissen
+* __Samsung Galaxy Note II LTE (Verizon) (SCH-I605):__ sbrissen
+* __Samsung Galaxy Note II LTE (Sprint) (SPH-L900):__ sbrissen
+* __Samsung Galaxy Note II LTE (USCC) (SCH-R950):__ sbrissen
 * __Samsung Galaxy Note 10.1 (GT-N80XX):__ Entropy512, Espenfjo
+* __Samsung Galaxy Note 10.1 LTE (Verizon) (SCH-I925):__ sbrissen
 * __Samsung Galaxy R (GT-I9103):__ Adam77Root, Epsylon3
 * __Samsung Galaxy S Blaze 4G (SGH-T769):__ UberPinguin
 * __Samsung Galaxy S (GT-I9000):__ pawitp
 * __Samsung Galaxy S (GT-I9000B):__ helvio88
+* __Samsung Galaxy S II (T-Mobile) (SGH-T989):__ mikeyman77
+* __Samsung Galaxy S II (AT&T) (SGH-I727):__ topprospect
 * __Samsung Galaxy S II (AT&T) (SGH-I777):__ Entropy512
 * __Samsung Galaxy S II (intl) (GT-I9100):__ codeworkx, Espenfjo
 * __Samsung Galaxy S II (intl) (GT-I9100G):__ codeworkx

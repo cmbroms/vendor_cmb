@@ -1,4 +1,4 @@
-RODUCT_BRAND ?= projectcmb
+PRODUCT_BRAND ?= projectcmb
 
 -include vendor/cmb-priv/keys.mk
 SUPERUSER_EMBEDDED := true
@@ -23,11 +23,11 @@ SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
 # determine the smaller dimension
 #TARGET_BOOTANIMATION_SIZE := $(shell \
-  if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
-    echo $(TARGET_SCREEN_WIDTH); \
-  else \
-    echo $(TARGET_SCREEN_HEIGHT); \
-  fi )
+#  if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
+#    echo $(TARGET_SCREEN_WIDTH); \
+#  else \
+#    echo $(TARGET_SCREEN_HEIGHT); \
+#  fi )
 
 # get a sorted list of the sizes
 #bootanimation_sizes := $(subst .zip,, $(shell ls vendor/cmb/prebuilt/common/bootanimation))
@@ -38,16 +38,16 @@ SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 #$(eval TARGET_BOOTANIMATION_NAME := $(shell \
 #  if [ -z "$(TARGET_BOOTANIMATION_NAME)" ]; then
 #    if [ $(1) -le $(TARGET_BOOTANIMATION_SIZE) ]; then \
-      echo $(1); \
-      exit 0; \
-    fi;
+#      echo $(1); \
+#      exit 0; \
+#    fi;
 #  fi;
 #  echo $(TARGET_BOOTANIMATION_NAME); ))
 #endef
 #$(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
 #PRODUCT_COPY_FILES += \
-    vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+#    vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
 #endif
 
 #ifdef CM_NIGHTLY
@@ -83,8 +83,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += persist.service.adb.enable=1
 endif
 
 # Copy over the changelog to the device
-#PRODUCT_COPY_FILES += \
-#    vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
+PRODUCT_COPY_FILES += \
+    vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
@@ -240,13 +240,11 @@ ifdef CM_BUILDTYPE
         # Add leading dash to CM_EXTRAVERSION
         CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
     endif
+else
+    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
+    CM_BUILDTYPE := RC1
+    CM_EXTRAVERSION :=
 endif
-
-#else
-#    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-#    CM_BUILDTYPE := UNOFFICIAL
-#    CM_EXTRAVERSION :=
-#endif
 
 ifdef CM_RELEASE
     CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
