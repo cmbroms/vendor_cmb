@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= projectcmb
+PRODUCT_BRAND ?= cmbroms
 
 -include vendor/cmb-priv/keys.mk
 SUPERUSER_EMBEDDED := true
@@ -242,7 +242,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := RC1
+    CM_BUILDTYPE := RC2
     CM_EXTRAVERSION :=
 endif
 
@@ -257,7 +257,7 @@ else
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cmb.version=$(CM_VERSION) \
+  ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
 -include vendor/cmb/sepolicy/sepolicy.mk
