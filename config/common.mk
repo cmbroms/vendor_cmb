@@ -46,8 +46,8 @@ SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 #endef
 #$(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
-#PRODUCT_COPY_FILES += \
-#    vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip:system/media/bootanimation.zip
+PRODUCT_COPY_FILES += \
+    vendor/cmb/prebuilt/common/bootanimation/800.zip:system/media/bootanimation.zip
 #endif
 
 #ifdef CM_NIGHTLY
@@ -242,7 +242,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := RC2
+    CM_BUILDTYPE := RC3
     CM_EXTRAVERSION :=
 endif
 
