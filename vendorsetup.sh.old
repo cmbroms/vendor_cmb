@@ -1,4 +1,0 @@
-for i in `cat cmbtargets`
-do
-    add_lunch_combo $i
-done

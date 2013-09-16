@@ -18,4 +18,5 @@ PRODUCT_PACKAGES += \
     MagicSmokeWallpapers \
     LiveWallpapers \
     LiveWallpapersPicker \
-    VisualizationWallpapers
+    VisualizationWallpapers \
+    VideoEditor
