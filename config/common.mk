@@ -146,16 +146,15 @@ include vendor/cmb/config/themes_common.mk
 
 # Required CM packages
 PRODUCT_PACKAGES += \
-    Focal \
     Development \
     LatinIME \
     Superuser \
+    BluetoothExt \
     su
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
     VoicePlus \
-    VideoEditor \
     VoiceDialer \
     SoundRecorder \
     Basic
@@ -241,7 +240,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := RC4
+    CM_BUILDTYPE := R1A
     CM_EXTRAVERSION :=
 endif
 
