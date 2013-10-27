@@ -247,7 +247,7 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := r2
+    CM_BUILDTYPE := r2alpha
     CM_EXTRAVERSION :=
 endif
 
