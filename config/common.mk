@@ -1,6 +1,5 @@
 PRODUCT_BRAND ?= cmbroms
 
--include vendor/cmb-priv/keys.mk
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
@@ -59,11 +58,15 @@ endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
+ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-google
+endif
+
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-    ro.com.google.clientidbase=android-google \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dateformat=MM-dd-yyyy \
@@ -86,12 +89,14 @@ PRODUCT_COPY_FILES += \
     vendor/cmb/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
 
 # Backup Tool
+ifneq ($(WITH_GMS),true)
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bin/backuptool.sh:system/bin/backuptool.sh \
     vendor/cmb/prebuilt/common/bin/backuptool.functions:system/bin/backuptool.functions \
     vendor/cmb/prebuilt/common/bin/50-cm.sh:system/addon.d/50-cm.sh \
     vendor/cmb/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
     vendor/cmb/prebuilt/common/bin/remount:system/xbin/remount
+endif
 
 # init.d support
 PRODUCT_COPY_FILES += \
@@ -241,13 +246,13 @@ ifdef CM_BUILDTYPE
         # Force build type to EXPERIMENTAL
         CM_BUILDTYPE := EXPERIMENTAL
         # Remove leading dash from CM_EXTRAVERSION
-        CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
+        CwM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
         # Add leading dash to CM_EXTRAVERSION
         CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := r2rc1
+    CM_BUILDTYPE := cmb3
     CM_EXTRAVERSION :=
 endif
 
@@ -255,7 +260,7 @@ ifdef CM_RELEASE
     CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
 else
     ifeq ($(PRODUCT_VERSION_MINOR),0)
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
+        CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d%H%M)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
     else
         CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
     endif
@@ -265,5 +270,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
 
--include vendor/cmb/sepolicy/sepolicy.mk
+-include vendor/cm/sepolicy/sepolicy.mk
+
+-include vendor/cm-priv/keys/keys.mk
+
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
