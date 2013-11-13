@@ -50,23 +50,19 @@ endif
 
 #ifdef CM_NIGHTLY
 #PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmodnightly
+#    ro.rommanager.developerid=cyanogenmodnightly
 #else
 #PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmod
+#    ro.rommanager.developerid=cyanogenmod
 #endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.clientidbase=android-google
-endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.com.google.clientidbase=android-google \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.setupwizard.enterprise_mode=1 \
     ro.com.android.dateformat=MM-dd-yyyy \
@@ -142,10 +138,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmb/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Don't export PS1 in /system/etc/mkshrc.
-PRODUCT_COPY_FILES += \
-    vendor/cmb/prebuilt/common/etc/mkshrc:system/etc/mkshrc
-
 # T-Mobile theme engine
 include vendor/cmb/config/themes_common.mk
 
@@ -162,14 +154,16 @@ PRODUCT_PACKAGES += \
     VoicePlus \
     VoiceDialer \
     SoundRecorder \
-    Basic
+    Basic \
+    libemoji
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
-    Trebuchet \
+    Launcher3 \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
+    Apollo \
     CMFileManager \
     LockClock
 
@@ -227,7 +221,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/common
 
 PRODUCT_VERSION_MAJOR = 4
-PRODUCT_VERSION_MINOR = 3
+PRODUCT_VERSION_MINOR = 4
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
 # Set CM_BUILDTYPE
@@ -246,13 +240,13 @@ ifdef CM_BUILDTYPE
         # Force build type to EXPERIMENTAL
         CM_BUILDTYPE := EXPERIMENTAL
         # Remove leading dash from CM_EXTRAVERSION
-        CwM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
+        CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
         # Add leading dash to CM_EXTRAVERSION
         CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := cmb3
+    CM_BUILDTYPE := cmb4.4
     CM_EXTRAVERSION :=
 endif
 
@@ -269,8 +263,6 @@ endif
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
   ro.modversion=$(CM_VERSION)
-
--include vendor/cm/sepolicy/sepolicy.mk
 
 -include vendor/cm-priv/keys/keys.mk
 
