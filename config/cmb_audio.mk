@@ -20,6 +20,7 @@ PRODUCT_COPY_FILES += \
 	$(NOTIFICATION_PATH)/Naughty.ogg:system/media/audio/notifications/Naughty.ogg \
 	$(NOTIFICATION_PATH)/Pong.ogg:system/media/audio/notifications/Pong.ogg \
 	$(NOTIFICATION_PATH)/Rang.ogg:system/media/audio/notifications/Rang.ogg \
+	$(NOTIFICATION_PATH)/hangouts_message.ogg:system/media/audio/notifications/hangouts_message.ogg \
 	$(NOTIFICATION_PATH)/Stone.ogg:system/media/audio/notifications/Stone.ogg
 
 # Ringtones
@@ -32,5 +33,6 @@ PRODUCT_COPY_FILES += \
 	$(RINGTONE_PATH)/House_of_house.ogg:system/media/audio/ringtones/House_of_house.ogg \
 	$(RINGTONE_PATH)/Lyon.ogg:system/media/audio/ringtones/Lyon.ogg \
 	$(RINGTONE_PATH)/Rockin.ogg:system/media/audio/ringtones/Rockin.ogg \
+	$(RINGTONE_PATH)hangouts_video_call.ogg:system/media/audio/hangouts_video_call.ogg \
 	$(RINGTONE_PATH)/Silmarillia.ogg:system/media/audio/ringtones/Silmarillia.ogg
 
