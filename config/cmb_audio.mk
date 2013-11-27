@@ -1,4 +1,4 @@
-# CyanogenMod Audio Files
+# CMB Audio Files
 #
 
 ALARM_PATH := vendor/cmb/prebuilt/common/media/audio/alarms
