@@ -19,6 +19,8 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     VisualizationWallpapers \
+    NoiseField \
+    PhaseBeam \
     PhotoTable
 
 PRODUCT_PACKAGES += \
