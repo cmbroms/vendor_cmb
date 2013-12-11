@@ -1,13 +1,7 @@
 cmb_hammerhead-userdebug
-cmb_d2att-userdebug
-cmb_d2cri-userdebug
-cmb_d2mtr-userdebug
-cmb_d2spr-userdebug
-cmb_d2tmo-userdebug
-cmb_d2usc-userdebug
-cmb_d2vzw-userdebug
 cmb_flo-userdebug
 cmb_grouper-userdebug
+cmb_m7vzw-userdebug
 cmb_m7att-userdebug
 cmb_m7spr-userdebug
 cmb_m7tmo-userdebug
@@ -20,9 +14,3 @@ cmb_pollux_windy-userdebug
 cmb_tf300t-userdebug
 cmb_tf700t-userdebug
 cmb_tf201-userdebug
-cmb_mb886-userdebug
-cmb_xt907-userdebug
-cmb_xt925-userdebug
-cmb_xt926-userdebug
-cmb_d2vzw-userdebug
-
