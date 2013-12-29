@@ -21,6 +21,7 @@ PRODUCT_PACKAGES += \
     VisualizationWallpapers \
     NoiseField \
     PhaseBeam \
+    VisualizationWallpapers \
     PhotoTable
 
 PRODUCT_PACKAGES += \
