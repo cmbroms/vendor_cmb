@@ -254,7 +254,7 @@ ifdef CM_BUILDTYPE
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
     CM_BUILDTYPE := cmb4.4
-    CM_EXTRAVERSION :=-rc3.5
+    CM_EXTRAVERSION :=-rc4
 endif
 
 ifdef CM_RELEASE

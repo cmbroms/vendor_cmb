@@ -2,10 +2,10 @@
 $(call inherit-product, vendor/cmb/config/common.mk)
 
 # Bring in all audio files
-include frameworks/base/data/sounds/NewAudio.mk
+#include frameworks/base/data/sounds/NewAudio.mk
 
 # Extra Ringtones
-include frameworks/base/data/sounds/AudioPackageNewWave.mk
+#include frameworks/base/data/sounds/AudioPackageNewWave.mk
 
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
