@@ -76,11 +76,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=0 \
+    ro.build.selinux=1 \
     persist.sys.root_access=0
 
 ifneq ($(TARGET_BUILD_VARIANT),eng)
-# Enable ADB authentication
+# Disable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.debuggable=1
@@ -119,9 +119,9 @@ PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
 # Compcache/Zram support
-PRODUCT_COPY_FILES += \
-    vendor/cmb/prebuilt/common/bin/compcache:system/bin/compcache \
-    vendor/cmb/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
+#PRODUCT_COPY_FILES += \
+#    vendor/cmb/prebuilt/common/bin/compcache:system/bin/compcache \
+#    vendor/cmb/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 # Terminal Emulator
 PRODUCT_COPY_FILES +=  \
@@ -228,7 +228,7 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/common
 
 PRODUCT_VERSION_MAJOR = 4
-PRODUCT_VERSION_MINOR = 4.2
+PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE = 0-RC0
 
 # Set CM_BUILDTYPE
@@ -253,8 +253,8 @@ ifdef CM_BUILDTYPE
     endif
 else
     # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := cmb4.4
-    CM_EXTRAVERSION :=-rc4
+    CM_BUILDTYPE := cmb4.4.2
+    CM_EXTRAVERSION :=4
 endif
 
 ifdef CM_RELEASE
@@ -274,3 +274,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/cm-priv/keys/keys.mk
 
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
+
+-include vendor/cyngn/product.mk
