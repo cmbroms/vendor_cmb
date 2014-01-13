@@ -273,6 +273,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 -include vendor/cm-priv/keys/keys.mk
 
+CM_DISPLAY_VERSION := $(CM_VERSION)
+
+PRODUCT_PROPERTY_OVERRIDES += \
+  ro.cm.display.version=$(CM_DISPLAY_VERSION)
+
 -include $(WORKSPACE)/hudson/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
