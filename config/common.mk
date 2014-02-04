@@ -167,6 +167,7 @@ PRODUCT_PACKAGES += \
 # Custom CM packages
 PRODUCT_PACKAGES += \
     Launcher3 \
+    Trebuchet \
     DSPManager \
     libcyanogen-dsp \
     audio_effects.conf \
@@ -184,6 +185,7 @@ PRODUCT_PACKAGES += \
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
+    libsepol \
     openvpn \
     e2fsck \
     mke2fs \
