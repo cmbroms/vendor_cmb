@@ -7,6 +7,9 @@ $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 # Include CM audio files
 include vendor/cmb/config/cmb_audio.mk
 
+# Include CM LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
+
 # Optional CM packages
 PRODUCT_PACKAGES += \
     MagicSmokeWallpapers \
