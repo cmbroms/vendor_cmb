@@ -79,6 +79,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1 \
     persist.sys.root_access=0
 
+# Thank you, please drive thru!
+PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
+
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 # Disable ADB authentication
 ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=0
@@ -159,8 +162,6 @@ PRODUCT_PACKAGES += \
 # Optional CM packages
 PRODUCT_PACKAGES += \
     VoicePlus \
-    VoiceDialer \
-    SoundRecorder \
     Basic \
     libemoji
 
@@ -173,15 +174,14 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     Apollo \
     CMFileManager \
-    LockClock
+    LockClock \
+    CMFota \
+    CMAccount
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
     org.cyanogenmod.hardware \
     org.cyanogenmod.hardware.xml
-
-PRODUCT_PACKAGES += \
-    CellBroadcastReceiver
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
@@ -226,48 +226,16 @@ PRODUCT_PACKAGES += \
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/common
 
 PRODUCT_VERSION_MAJOR = 4
 PRODUCT_VERSION_MINOR = 4
-PRODUCT_VERSION_MAINTENANCE = 
+PRODUCT_VERSION_MAINTENANCE =
 
-# Set CM_BUILDTYPE
-ifdef CM_NIGHTLY
-    CM_BUILDTYPE := NIGHTLY
-endif
-ifdef CM_EXPERIMENTAL
-    CM_BUILDTYPE := EXPERIMENTAL
-endif
-ifdef CM_RELEASE
-    CM_BUILDTYPE := RELEASE
-endif
+CM_BUILDTYPE := cmb4.4.2
+CM_EXTRAVERSION :=
 
-ifdef CM_BUILDTYPE
-    ifdef CM_EXTRAVERSION
-        # Force build type to EXPERIMENTAL
-        CM_BUILDTYPE := EXPERIMENTAL
-        # Remove leading dash from CM_EXTRAVERSION
-        CM_EXTRAVERSION := $(shell echo $(CM_EXTRAVERSION) | sed 's/-//')
-        # Add leading dash to CM_EXTRAVERSION
-        CM_EXTRAVERSION := -$(CM_EXTRAVERSION)
-    endif
-else
-    # If CM_BUILDTYPE is not defined, set to UNOFFICIAL
-    CM_BUILDTYPE := cmb4.4.2
-    CM_EXTRAVERSION :=
-endif
-
-#ifdef CM_RELEASE
-#    CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(CM_BUILD)
-#else
-#    ifeq ($(PRODUCT_VERSION_MINOR),0)
-#        CM_VERSION := $(PRODUCT_VERSION_MAJOR)-$(shell date -u +%Y%m%d%H%M)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
-#    else
-        CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
-#    endif
-#endif
+CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
 
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.version=$(CM_VERSION) \
