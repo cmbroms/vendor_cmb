@@ -7,7 +7,7 @@ include vendor/cmb/config/cmb_audio.mk
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ringtone=Orion.ogg \
-    ro.config.notification_sound=Argon.ogg \
+    ro.config.notification_sound=hangouts_message.ogg \
     ro.config.alarm_alert=Hassium.ogg
 
 ifeq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
