@@ -6,7 +6,7 @@ include vendor/cmb/config/cmb_audio.mk
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Orion.ogg \
+    ro.config.ringtone=Seville.ogg \
     ro.config.notification_sound=hangouts_message.ogg \w
     ro.config.alarm_alert=Hassium.ogg
 
