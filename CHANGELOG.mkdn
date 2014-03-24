@@ -1,7 +1,6 @@
 CyanogenMod
 ===============
 
-Visit http://github.com/CyanogenMod for full source and git access.
 
 Visit http://review.cyanogenmod.org for our Gerrit instance.
 
