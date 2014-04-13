@@ -3,23 +3,7 @@ PRODUCT_BRAND ?= cmbroms
 SUPERUSER_EMBEDDED := true
 SUPERUSER_PACKAGE_PREFIX := com.android.settings.cyanogenmod.superuser
 
-# To deal with CM9 specifications
-# TODO: remove once all devices have been switched
-ifneq ($(TARGET_BOOTANIMATION_NAME),)
-TARGET_SCREEN_DIMENSIONS := $(subst -, $(space), $(subst x, $(space), $(TARGET_BOOTANIMATION_NAME)))
-ifeq ($(TARGET_SCREEN_WIDTH),)
-TARGET_SCREEN_WIDTH := $(word 2, $(TARGET_SCREEN_DIMENSIONS))
-endif
-ifeq ($(TARGET_SCREEN_HEIGHT),)
-TARGET_SCREEN_HEIGHT := $(word 3, $(TARGET_SCREEN_DIMENSIONS))
-endif
-endif
-
 ifneq ($(TARGET_SCREEN_WIDTH) $(TARGET_SCREEN_HEIGHT),$(space))
-
-# clear TARGET_BOOTANIMATION_NAME in case it was set for CM9 purposes
-TARGET_BOOTANIMATION_NAME :=
-
 # determine the smaller dimension
 TARGET_BOOTANIMATION_SIZE := $(shell \
   if [ $(TARGET_SCREEN_WIDTH) -lt $(TARGET_SCREEN_HEIGHT) ]; then \
@@ -48,13 +32,6 @@ $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size
 PRODUCT_BOOTANIMATION := vendor/cmb/prebuilt/common/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
 endif
 
-#ifdef CM_NIGHTLY
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.rommanager.developerid=cyanogenmodnightly
-#else
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.rommanager.developerid=cyanogenmod
-#endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -113,18 +90,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 
-# SELinux filesystem labels
-PRODUCT_COPY_FILES += \
-    vendor/cmb/prebuilt/common/etc/init.d/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
-
 # CM-specific init file
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cm.rc
-
-# Compcache/Zram support
-#PRODUCT_COPY_FILES += \
-#    vendor/cmb/prebuilt/common/bin/compcache:system/bin/compcache \
-#    vendor/cmb/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache
 
 # Terminal Emulator
 PRODUCT_COPY_FILES +=  \
