@@ -12,10 +12,11 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/dictionaries
 
 # Optional CM packages
 PRODUCT_PACKAGES += \
-    MagicSmokeWallpapers \
+    Galaxy4 \
+    HoloSpiralWallpaper \
     LiveWallpapers \
     LiveWallpapersPicker \
-    VisualizationWallpapers \
+    MagicSmokeWallpapers \
     NoiseField \
     PhaseBeam \
     VisualizationWallpapers \
