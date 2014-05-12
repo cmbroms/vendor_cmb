@@ -4,7 +4,7 @@ $(call inherit-product, vendor/cmb/config/common.mk)
 # Include CM audio files
 include vendor/cmb/config/cmb_audio.mk
 
-# Default ringtone
+# Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.notification_sound=hangouts_message.ogg \
     ro.config.alarm_alert=CyanAlarm.ogg
