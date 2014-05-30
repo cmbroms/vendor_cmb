@@ -1,7 +1,7 @@
 # Inherit common CM stuff
 $(call inherit-product, vendor/cmb/config/common_full.mk)
 
-# Default ringtone
+# Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.ringtone=Seville.ogg \
     ro.config.notification_sound=hangouts_message.ogg \
