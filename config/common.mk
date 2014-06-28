@@ -144,7 +144,8 @@ PRODUCT_PACKAGES += \
     CMFileManager \
     LockClock \
     CMFota \
-    CMAccount
+    CMAccount \
+    CMHome
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
@@ -191,6 +192,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     rsync
 
+# Stagefright FFMPEG plugin
+PRODUCT_PACKAGES += \
+    libstagefright_soft_ffmpegadec \
+    libstagefright_soft_ffmpegvdec \
+    libFFmpegExtractor \
+    libnamparser
+
 # easy way to extend to add more packages
 -include vendor/extra/product.mk
 
@@ -200,7 +208,7 @@ PRODUCT_VERSION_MAJOR = 4
 PRODUCT_VERSION_MINOR = 4
 PRODUCT_VERSION_MAINTENANCE =
 
-CM_BUILDTYPE := CMB_kkr3-4.4.2r2
+CM_BUILDTYPE := CMB_kkr3-4.4.4r1
 CM_EXTRAVERSION :=
 
 CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
