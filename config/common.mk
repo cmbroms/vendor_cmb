@@ -81,6 +81,10 @@ PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/bin/remount:system/xbin/remount
 endif
 
+# Signature compatibility validation
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/bin/otasigcheck.sh:system/bin/otasigcheck.sh
+
 # init.d support
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
