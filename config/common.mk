@@ -235,3 +235,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
