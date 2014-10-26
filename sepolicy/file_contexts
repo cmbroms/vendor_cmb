@@ -1,4 +1,5 @@
 /cache/dalvik-cache(/.*)? u:object_r:dalvikcache_data_file:s0
+/data/dalvik-cache(/.*)? u:object_r:dalvikcache_data_file:s0
 
 #############################
 # performance-related sysfs files (CM)
