@@ -145,13 +145,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Launcher3 \
     Trebuchet \
-    DSPManager \
-    libcyanogen-dsp \
-    audio_effects.conf \
-    Apollo \
+    AudioFX \
     CMFileManager \
+    Eleven \
     LockClock \
-    CMFota \
     CMAccount \
     CMHome
 
@@ -215,11 +212,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cmb/overlay/common
 
-PRODUCT_VERSION_MAJOR = 4
-PRODUCT_VERSION_MINOR = 4
+PRODUCT_VERSION_MAJOR = 5
+PRODUCT_VERSION_MINOR = 02
 PRODUCT_VERSION_MAINTENANCE =
 
-CM_BUILDTYPE := CMB_kkr3-4.4.4r1
+CM_BUILDTYPE := CMB_LPr1-5.0.2r1
 CM_EXTRAVERSION :=
 
 CM_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)-$(CM_BUILD)$(CM_EXTRAVERSION)
