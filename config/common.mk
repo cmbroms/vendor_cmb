@@ -139,7 +139,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     VoicePlus \
     Basic \
-    libemoji
+    libemoji \
+    Terminal
 
 # Custom CM packages
 PRODUCT_PACKAGES += \
