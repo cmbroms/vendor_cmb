@@ -102,11 +102,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cmb/prebuilt/common/etc/init.local.rc:root/init.cm.rc
 
-# Terminal Emulator
-PRODUCT_COPY_FILES +=  \
-    vendor/cmb/proprietary/Term.apk:system/app/Term.apk \
-    vendor/cmb/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
-
 # Bring in camera effects
 PRODUCT_COPY_FILES +=  \
     vendor/cmb/prebuilt/common/media/LMprec_508.emd:system/media/LMprec_508.emd \
@@ -131,7 +126,6 @@ include vendor/cmb/config/themes_common.mk
 PRODUCT_PACKAGES += \
     Development \
     LatinIME \
-    Superuser \
     BluetoothExt \
     su
 
