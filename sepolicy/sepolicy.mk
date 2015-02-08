@@ -17,9 +17,11 @@ BOARD_SEPOLICY_UNION += \
     app.te \
     auditd.te \
     bootanim.te \
+    drmserver.te \
     healthd.te \
     hostapd.te \
     installd.te \
+    mediaserver.te \
     netd.te \
     property.te \
     recovery.te \
@@ -29,6 +31,7 @@ BOARD_SEPOLICY_UNION += \
     system.te \
     system_app.te \
     ueventd.te \
+    uncrypt.te \
     vold.te \
     zygote.te \
     mac_permissions.xml
